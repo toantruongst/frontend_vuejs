@@ -25,8 +25,10 @@
       <option value="5">Hitori 9 x 9</option>
       <option value="6">Hitori 10 x 10</option>
       <option value="7">Hitori 15 x 15</option>
-      <option value="8">Hitori 20 x 20</option>
-      <option value="9">Hitori 25 x 25</option>
+      <option value="8">Hitori 17 x 15</option>
+      <option value="9">Hitori 20 x 20</option>
+      <option value="10">Hitori 25 x 25</option>
+      <option value="11">Hitori 30 x 30</option>
     </select>
     <button @click="changeName">Load Hitori</button> 
     <p></p>
@@ -69,7 +71,7 @@ export default {
     const requestOptions = {
       method: "POST",
       headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "application/json;charset=UTF-8" },
-      body: JSON.stringify({"rows": 4,"cols": 4,"method": "CC","data": [[1, 2, 3, 4],[2, 3, 4, 1],[3, 4, 1, 2],[4, 1, 2, 1]]})
+      body: JSON.stringify({"rows": this.so_colrow,"cols": this.so_colrow,"method": "CC","data": this.sample})
     };
     console.log(requestOptions)
     const response = await fetch("http://localhost:8000/hitori-solver", requestOptions);
@@ -94,8 +96,10 @@ export default {
     if(e.value=="5") {this.so_colrow = 9;}
     if(e.value=="6") {this.so_colrow = 10;}
     if(e.value=="7") {this.so_colrow = 15;}
-    if(e.value=="8") {this.so_colrow = 20;}
-    if(e.value=="9") {this.so_colrow = 25;}
+    if(e.value=="8") {this.so_colrow = 17;}
+    if(e.value=="9") {this.so_colrow = 20;}
+    if(e.value=="10") {this.so_colrow = 25;}
+    if(e.value=="11") {this.so_colrow = 30;}
     this.sample = samples[e.value-1];
     }, 
     //printLogs(newValue, oldValue) { 
